@@ -40,16 +40,15 @@ class _HomeState extends State<Home> {
                               Text(
                                 "العنوان",
                                 style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     color:Colors.white,
-                                    fontWeight: FontWeight.bold
                                 ),
 
                               ),
                               Text(
                                 "الرياض,السعوديه",
                                 style: TextStyle(
-                                    fontSize: 22,
+                                    fontSize: 20,
                                     color:Colors.white,
                                     fontWeight: FontWeight.bold
                                 ),
@@ -58,7 +57,22 @@ class _HomeState extends State<Home> {
                             ],
                           ),
                           const SizedBox(width: 15),
-                          Icon(Icons.location_on,color: Colors.white,),
+                          Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(5),
+                                  bottomRight: Radius.circular(5),
+                                  topLeft: Radius.circular(5),
+                                  topRight: Radius.circular(5),
+                                ),
+                                color: Colors.black12,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(5),
+                                child: Icon(Icons.location_on,color: Colors.white,
+                                ),
+                              )
+                          ),
                         ],
                       ),
                     ),
@@ -94,27 +108,124 @@ class _HomeState extends State<Home> {
               ),
             ),
             const SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.only(right: 12,left: 12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "اتمام الشراء",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color:Colors.black,
+                                fontWeight: FontWeight.bold
+                            ),
+
+                          ),
+                          Text(
+                            "اتمام الشراء ودفع أمن",
+                            style: TextStyle(
+                              fontSize: 8,
+                              color:Colors.black54,
+                            ),
+
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 15),
+                      Icon(Icons.home,color: Colors.deepOrange,),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "الشحن السريع",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color:Colors.black,
+                                fontWeight: FontWeight.bold
+                            ),
+
+                          ),
+                          Text(
+                            "خلال 1 ل 3أيام",
+                            style: TextStyle(
+                              fontSize: 8,
+                              color:Colors.black54,
+                            ),
+
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 15),
+                      Icon(Icons.ac_unit,color: Colors.deepOrange,),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "ارجاع السلع مجانا",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color:Colors.black,
+                                fontWeight: FontWeight.bold
+                            ),
+
+                          ),
+                          Text(
+                            "بسهوله خلال 3أيام",
+                            style: TextStyle(
+                              fontSize: 8,
+                              color:Colors.black54,
+                            ),
+
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 15),
+                      Icon(Icons.location_on,color: Colors.deepOrange,),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 15),
             Container(
               margin: const EdgeInsets.only(left: 20, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    ".. عرض المزيد",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap:(){
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => catigory(),),);
-                      //Navigator.popAndPushNamed(context, catigory.id);
-                    },
-                    child: Text(
-                      "الفئات",
-                      style: TextStyle(
-                        fontSize: 18,
+                  Row(
+                    children: [
+                      Icon(Icons.arrow_back_ios,color: Colors.deepOrange,size: 10,),
+                      Text(
+                        "اظهار المزيد",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.black26
+                        ),
                       ),
+                    ],
+                  ),
+                  Text(
+                    "الفئات",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                 ],
@@ -125,43 +236,47 @@ class _HomeState extends State<Home> {
               onTap: (){
                 Navigator.popAndPushNamed(context, Products.id);
               },
-              child: Container(
-                height: 90,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: collectionList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return CustomButton(
-                      icon: collectionList[index].imgUrl,
-                      name: collectionList[index].name,
-                    );
-                  },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Container(
+                  height: 90,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: collectionList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CustomButton(
+                        icon: collectionList[index].imgUrl,
+                        name: collectionList[index].name,
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 15),
             Container(
-              margin: const EdgeInsets.only(left: 20, right: 20),
+              margin: const EdgeInsets.only(left: 20, right: 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    ".. عرض المزيد",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap:(){
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => catigory(),),);
-                      //Navigator.popAndPushNamed(context, catigory.id);
-                    },
-                    child: Text(
-                      "أفضل العروض والخصومات",
-                      style: TextStyle(
-                        fontSize: 18,
+                  Row(
+                    children: [
+                      Icon(Icons.arrow_back_ios,color: Colors.deepOrange,size: 10,),
+                      Text(
+                        "اظهار المزيد",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black26
+                        ),
                       ),
+                    ],
+                  ),
+                  Text(
+                    "أفضل العروض والخصومات",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                 ],
@@ -379,22 +494,23 @@ class _HomeState extends State<Home> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    ".. عرض المزيد",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap:(){
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => catigory(),),);
-                      //Navigator.popAndPushNamed(context, catigory.id);
-                    },
-                    child: Text(
-                      "الأكثر مبيعا",
-                      style: TextStyle(
-                        fontSize: 18,
+                  Row(
+                    children: [
+                      Icon(Icons.arrow_back_ios,color: Colors.deepOrange,size: 10,),
+                      Text(
+                        "اظهار المزيد",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black26
+                        ),
                       ),
+                    ],
+                  ),
+                  Text(
+                    "الأكثر مبيعا",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                 ],
@@ -607,11 +723,17 @@ class _HomeState extends State<Home> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    ".. عرض المزيد",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+                  Row(
+                    children: [
+                      Icon(Icons.arrow_back_ios,color: Colors.deepOrange,size: 10,),
+                      Text(
+                        "اظهار المزيد",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black26
+                        ),
+                      ),
+                    ],
                   ),
                   GestureDetector(
                     onTap:(){
@@ -621,7 +743,8 @@ class _HomeState extends State<Home> {
                     child: Text(
                       "أخترنا لك",
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                   ),
@@ -838,19 +961,20 @@ buildSearchBar() {
     margin: const EdgeInsets.only(left: 20, right: 20, top: 15),
     child: TextFormField(
       controller: new TextEditingController(),
+      textAlign: TextAlign.right,
       decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.search,
             color: Color(0xFF98A0A6),
             size: 20,
           ),
-          hintText: "أبحث هنا",
+          hintText: "أبحث عن منتج",
           hintStyle: TextStyle(
                 color:Color(0xFF98A0A6),
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.bold
             ),
-          contentPadding: const EdgeInsets.only(top: 10),
+          contentPadding: const EdgeInsets.only(top: 10,right: 10),
           border: InputBorder.none,
           enabledBorder: InputBorder.none),
     ),

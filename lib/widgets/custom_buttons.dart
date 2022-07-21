@@ -9,7 +9,6 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.black,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
@@ -24,19 +23,27 @@ class CustomButton extends StatelessWidget {
         children: [
           Container(
             width: 70,
-            padding: const EdgeInsets.fromLTRB(8, 15, 8, 15),
+            padding: const EdgeInsets.fromLTRB(8, 1, 8, 1),
             decoration: BoxDecoration(
               color: Colors.white10,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Image.asset(icon, height: 25),
+            child:ClipOval(
+              child: Material(
+                color: Colors.deepOrange,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10,left: 10,top: 13,bottom: 13),
+                  child: Image.asset(icon, height: 25),
+                ),
+              ),
+            ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 5),
           Text(
             name,
             style: TextStyle(
             fontSize: 12,
-              color: Colors.white
+              color: Colors.black
           ),
           ),
         ],
